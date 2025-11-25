@@ -1,0 +1,75 @@
+{
+  "name": "copy-file-object",
+  "displayName": "Copy File Object",
+  "description": "Copy actual file objects (not just paths) to clipboard for pasting into browser based AI chats. Supports Windows, macOS, and Linux.",
+  "publisher": "AndrewLee",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bzwear/copy-file-object"
+  },
+  "version": "0.1.0",
+  "icon": "logo.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "AI"
+  ],
+  "keywords": [
+    "productivity",
+    "clipboard",
+    "file copy",
+    "upload",
+    "chatgpt",
+    "gemini",
+    "claude",
+    "productivity",
+    "context menu"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copy-file-object.copy",
+        "title": "Copy File Object"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "copy-file-object.copy",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c",
+        "when": "editorTextFocus || filesExplorerFocus"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "copy-file-object.copy",
+          "group": "7_modification",
+          "when": "resourceScheme == file"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.46.3",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
